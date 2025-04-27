@@ -1,8 +1,6 @@
 #pragma once
 
-#define AUTO_SHIFT_TIMEOUT 140
-#define NO_AUTO_SHIFT_NUMERIC
-#define NO_AUTO_SHIFT_TAB
-
+#define TAPPING_TERM 150
 #define CAPS_WORD_INVERT_ON_SHIFT
 #define CAPS_WORD_IDLE_TIMEOUT 0
+#define RGBLIGHT_DEFAULT_ON false
