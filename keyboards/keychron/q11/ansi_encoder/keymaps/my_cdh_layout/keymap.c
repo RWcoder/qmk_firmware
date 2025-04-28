@@ -41,7 +41,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,  KC_GRV,   KC_1,          KC_2,     KC_3,       KC_4,         KC_5,     KC_6,     KC_7,     KC_8,     KC_9,            KC_0,        KC_MINS,  KC_EQL,   KC_BSPC,       KC_DEL,
         ZOOM,     KC_TAB,   KC_Q,          KC_W,     KC_F,       KC_P,         KC_B,     KC_J,     KC_L,     KC_U,     KC_Y,            KC_SLSH,     KC_LBRC,  KC_RBRC,  KC_F9,         KC_HOME,
         _______,  KC_ENT,   KC_A,          KC_R,     KC_S,       KC_T,         KC_G,     KC_K,     KC_N,     KC_E,     KC_I,            KC_O,        KC_QUOT,  KC_ENT,   KC_END,
-        _______,  KC_LSFT,  LSFT_T(KC_X),  KC_C,     KC_D,       KC_V,         KC_Z,     KC_H,     KC_M,     KC_COMM,  LSFT_T(KC_DOT),  MO(SYMBOL),  CW_TOGG,  KC_F12,
+        _______,  KC_LCTL,  LSFT_T(KC_X),  KC_C,     KC_D,       KC_V,         KC_Z,     KC_H,     KC_M,     KC_COMM,  LSFT_T(KC_DOT),  MO(SYMBOL),  CW_TOGG,  KC_F12,
         _______,  KC_LCTL,  KC_LGUI,       KC_LALT,  A(KC_SPC),  MO(CONTROL),  KC_SPC,   KC_RGUI,  KC_RALT,  KC_RCTL,  KC_F8,           KC_F11,      KC_F10
     ),
 
@@ -50,7 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,  VDI_X_HOME,  KC_F1,     KC_F2,       KC_F3,       KC_F4,          KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,       KC_F10,      KC_F11,   KC_F12,     _______,  KC_INS,
         _______,  W(KC_LEFT),  WIN_SNAP,  WWW_POPOUT,  W(KC_UP),    C(KC_L),        MS_BTN4,  MS_BTN5,  KC_UP,    ALT_TAB,  CTRL_TAB,    C(KC_BSPC),  _______,  _______,    _______,  KC_PGUP,
         _______,  VDI_MIN,     KC_ESC,    S(KC_ESC),   C(KC_S),     W(S(KC_RGHT)),  C(KC_P),  KC_LEFT,  KC_DOWN,  KC_RGHT,  C(S(KC_P)),  MO(CODE),    KC_BSPC,  C(KC_ENT),  KC_PGDN,
-        _______,  KC_LSFT,     A(KC_F4),  C(KC_C),     C(S(KC_I)),  C(KC_GRV),      _______,  KC_HOME,  KC_END,   A(KC_Z),  A(KC_DOT),   KC_RCTL,     KC_CAPS,  _______,
+        _______,  KC_LSFT,     A(KC_F4),  C(KC_C),     C(S(KC_I)),  C(KC_GRV),      _______,  KC_HOME,  A(KC_Z),  KC_END,   A(KC_DOT),   KC_RCTL,     KC_CAPS,  _______,
         _______,  VDI_X_OFC,   KC_SLEP,   _______,     _______,     _______,        C(KC_V),  _______,  _______,  _______,  _______,     _______,     _______
     ),
 
