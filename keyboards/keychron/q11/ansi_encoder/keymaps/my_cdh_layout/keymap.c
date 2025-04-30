@@ -16,10 +16,10 @@
 
 enum layers {
     BASE,
+    LEFT_CTRL,
     FUNCTION,
     SYMBOL,
     CODE,
-    LEFT_CTRL,
     QWERTY,
     BOARD
 };
@@ -44,7 +44,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ZOOM,     KC_TAB,   KC_Q,          KC_W,     KC_F,       KC_P,          KC_B,     KC_J,     KC_L,     KC_U,     KC_Y,            KC_SLSH,     KC_LBRC,  KC_RBRC,  KC_F9,         KC_HOME,
         _______,  KC_ENT,   KC_A,          KC_R,     KC_S,       KC_T,          KC_G,     KC_K,     KC_N,     KC_E,     KC_I,            KC_O,        KC_QUOT,  KC_ENT,   KC_END,
         _______,  KC_LCTL,  LSFT_T(KC_X),  KC_C,     KC_D,       KC_V,          KC_Z,     KC_H,     KC_M,     KC_COMM,  LSFT_T(KC_DOT),  MO(SYMBOL),  CW_TOGG,  KC_F12,
-        _______,  L_CTRL,   KC_LGUI,       KC_LALT,  A(KC_SPC),  MO(FUNCTION),  KC_SPC,   KC_RGUI,  KC_RALT,  KC_RCTL,  KC_F8,           KC_F11,      KC_F10
+        _______,  L_CTRL,   KC_LGUI,       KC_LALT,  A(KC_SPC),  MO(FUNCTION),  KC_SPC,   KC_RGUI,  KC_RALT,  L_CTRL,   KC_F8,           KC_F11,      KC_F10
+    ),
+
+    [LEFT_CTRL] = LAYOUT_91_ansi(
+        _______,  _______,  KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,   _______,  _______,  _______,
+        _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
+        _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
+        _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
+        _______,  KC_LSFT,  KC_X,     _______,  _______,  _______,  _______,  _______,  _______,  _______,  KC_DOT,   KC_SLSH,  KC_LSFT,  KC_UP,
+        _______,  _______,  _______,  _______,  _______,  KC_SPC,   _______,  _______,  _______,  _______,  KC_LEFT,  KC_DOWN,  KC_RGHT
     ),
 
     [FUNCTION] = LAYOUT_91_ansi(
@@ -72,15 +81,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,  C(A(KC_DOT)),  KC_F24,   KC_F22,   A(KC_S),  KC_F20,   _______,  _______,  KC_F13,   KC_F17,   KC_F15,   _______,  _______,  _______,  _______,
         _______,  _______,       _______,  _______,  KC_F14,   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
         _______,  _______,       _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______
-    ),
-    
-    [LEFT_CTRL] = LAYOUT_91_ansi(
-        _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
-        _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
-        _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
-        _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
-        _______,  KC_LSFT,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  KC_DOT,   _______,  _______,  _______,
-        _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______
     ),
 
     [QWERTY] = LAYOUT_91_ansi(
@@ -190,10 +190,10 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 #if defined(ENCODER_MAP_ENABLE)
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
     [BASE]      = { ENCODER_CCW_CW(C(KC_MINS), C(KC_EQL)), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
+    [LEFT_CTRL] = { ENCODER_CCW_CW(C(KC_MINS), C(KC_EQL)), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
     [FUNCTION]  = { ENCODER_CCW_CW(C(KC_MINS), C(KC_EQL)), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
     [SYMBOL]    = { ENCODER_CCW_CW(C(KC_MINS), C(KC_EQL)), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
     [CODE]      = { ENCODER_CCW_CW(C(KC_MINS), C(KC_EQL)), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
-    [LEFT_CTRL] = { ENCODER_CCW_CW(C(KC_MINS), C(KC_EQL)), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
     [QWERTY]    = { ENCODER_CCW_CW(C(KC_MINS), C(KC_EQL)), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
     [BOARD]     = { ENCODER_CCW_CW(C(KC_MINS), C(KC_EQL)), ENCODER_CCW_CW(RM_PREV, RM_NEXT) }
 };
