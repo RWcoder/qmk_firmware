@@ -1,0 +1,6 @@
+#pragma once
+
+#define TAPPING_TERM 150
+#define CAPS_WORD_INVERT_ON_SHIFT
+#define CAPS_WORD_IDLE_TIMEOUT 0
+#define RGBLIGHT_DEFAULT_ON false
