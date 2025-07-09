@@ -40,7 +40,9 @@ enum custom_keycodes {
     LAMBDA,
     ALT_TAB,
     CTRL_TAB,
-    MJ_TOGG
+    MJ_TOGG,
+    IMPORT_PD,
+    READ_PQ
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -50,7 +52,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ZOOM,     KC_TAB,   KC_Q,          KC_W,     KC_F,       KC_P,          KC_B,     KC_J,     KC_L,     KC_U,     KC_Y,            KC_SLSH,     KC_LBRC,  KC_RBRC,  KC_F9,    KC_HOME,
         CURR_BD,  KC_TAB,   KC_A,          KC_R,     KC_S,       KC_T,          KC_G,     KC_K,     KC_N,     KC_E,     KC_I,            KC_O,        KC_QUOT,  KC_ENT,   KC_END,
         PREV_BD,  KC_LCTL,  LSFT_T(KC_X),  KC_C,     KC_D,       KC_V,          KC_Z,     KC_H,     KC_M,     KC_COMM,  LSFT_T(KC_DOT),  MO(SYMBOL),  CW_TOGG,  KC_F12,
-        _______,  L_CTRL,   KC_LGUI,       KC_LALT,  A(KC_SPC),  MO(FUNCTION),  KC_SPC,   KC_RGUI,  KC_RALT,  L_CTRL,   KC_F8,           KC_F11,      KC_F10
+        READ_PQ,  L_CTRL,   KC_LGUI,       KC_LALT,  A(KC_SPC),  MO(FUNCTION),  KC_SPC,   KC_RGUI,  KC_RALT,  L_CTRL,   KC_F8,           KC_F11,      KC_F10
     ),
 
     [ARROWS] = LAYOUT_91_ansi(
@@ -72,12 +74,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [FUNCTION] = LAYOUT_91_ansi(
-        _______,  _______,     _______,   _______,     _______,     _______,        _______,  _______,  _______,  _______,  _______,     _______,     _______,  _______,    _______,  TO(BOARD),  _______,
-        _______,  VDI_X_HOME,  KC_F1,     KC_F2,       KC_F3,       KC_F4,          KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,       KC_F10,      KC_F11,   KC_F12,     _______,  KC_INS,
-        _______,  W(KC_LEFT),  WIN_SNAP,  WWW_POPOUT,  W(KC_UP),    C(KC_L),        MS_BTN4,  MS_BTN5,  KC_UP,    ALT_TAB,  CTRL_TAB,    C(KC_BSPC),  _______,  _______,    _______,  KC_PGUP,
-        _______,  VDI_MIN,     KC_ESC,    S(KC_ESC),   C(KC_S),     W(S(KC_RGHT)),  C(KC_P),  KC_LEFT,  KC_DOWN,  KC_RGHT,  C(S(KC_P)),  KC_ENT,      KC_RCTL,  C(KC_ENT),  KC_PGDN,
-        _______,  KC_LSFT,     A(KC_F4),  C(KC_C),     C(S(KC_I)),  C(KC_GRV),      A(KC_Z),  KC_HOME,  A(KC_Z),  KC_END,   A(KC_DOT),   MO(CODE),    KC_CAPS,  _______,
-        _______,  VDI_X_OFC,   KC_SLEP,   _______,     MJ_TOGG,     _______,        C(KC_V),  _______,  _______,  _______,  _______,     _______,     _______
+        _______,    _______,     _______,   _______,     _______,     _______,        _______,  _______,  _______,  _______,  _______,     _______,     _______,  _______,    _______,  TO(BOARD),  _______,
+        _______,    VDI_X_HOME,  KC_F1,     KC_F2,       KC_F3,       KC_F4,          KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,       KC_F10,      KC_F11,   KC_F12,     _______,  KC_INS,
+        _______,    W(KC_LEFT),  WIN_SNAP,  WWW_POPOUT,  W(KC_UP),    C(KC_L),        MS_BTN4,  MS_BTN5,  KC_UP,    ALT_TAB,  CTRL_TAB,    C(KC_BSPC),  _______,  _______,    _______,  KC_PGUP,
+        _______,    VDI_MIN,     KC_ESC,    S(KC_ESC),   C(KC_S),     W(S(KC_RGHT)),  C(KC_P),  KC_LEFT,  KC_DOWN,  KC_RGHT,  C(S(KC_P)),  KC_ENT,      KC_RCTL,  C(KC_ENT),  KC_PGDN,
+        _______,    KC_LSFT,     A(KC_F4),  C(KC_C),     C(S(KC_I)),  C(KC_GRV),      A(KC_Z),  KC_HOME,  A(KC_Z),  KC_END,   A(KC_DOT),   MO(CODE),    KC_CAPS,  _______,
+        IMPORT_PD,  VDI_X_OFC,   KC_SLEP,   _______,     MJ_TOGG,     _______,        C(KC_V),  _______,  _______,  _______,  _______,     _______,     _______
     ),
 
     [SYMBOL] = LAYOUT_91_ansi(
@@ -205,6 +207,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             } else {
                 mouse_jiggle_active = false;
             }
+            return false;
+            
+        case IMPORT_PD:
+            SEND_STRING("import pandas as pd");
+            TAP(KC_ENT);
+            return false;
+            
+        case READ_PQ:
+            SEND_STRING("df = pd.read_parquet(r");
+            TAP(C(KC_V));
+            SEND_STRING(")");
+            TAP(KC_ENT);
             return false;
 
         default:
