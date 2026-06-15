@@ -43,17 +43,18 @@ enum custom_keycodes {
     MJ_TOGG,
     IMPORT_PD,
     READ_PQ,
-    TO_BOOKMARK
+    TO_BOOKMARK,
+    PIPELINE
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [BASE] = LAYOUT_91_ansi(
-        C(KC_0),  KC_ESC,   W(KC_1),       W(KC_2),  W(KC_3),    W(KC_4),       W(KC_5),  W(KC_6),  W(KC_7),  W(KC_8),  W(KC_9),         W(KC_0),     KC_F11,   KC_F12,   KC_PSCR,  C(A(KC_DEL)), KC_MUTE,
-        _______,  KC_GRV,   KC_1,          KC_2,     KC_3,       KC_4,          KC_5,     KC_6,     KC_7,     KC_8,     KC_9,            KC_0,        KC_MINS,  KC_EQL,   KC_BSPC,  KC_DEL,
-        ZOOM,     KC_TAB,   KC_Q,          KC_W,     KC_F,       KC_P,          KC_B,     KC_J,     KC_L,     KC_U,     KC_Y,            KC_SLSH,     KC_LBRC,  KC_RBRC,  KC_F9,    KC_HOME,
-        CURR_BD,  KC_TAB,   KC_A,          KC_R,     KC_S,       KC_T,          KC_G,     KC_K,     KC_N,     KC_E,     KC_I,            KC_O,        KC_QUOT,  KC_ENT,   KC_END,
-        PREV_BD,  KC_LCTL,  LSFT_T(KC_X),  KC_C,     KC_D,       KC_V,          KC_Z,     KC_H,     KC_M,     KC_COMM,  LSFT_T(KC_DOT),  MO(SYMBOL),  CW_TOGG,  KC_F12,
-        READ_PQ,  L_CTRL,   KC_LGUI,       KC_LALT,  A(KC_SPC),  MO(FUNCTION),  KC_SPC,   KC_RGUI,  KC_RALT,  L_CTRL,   KC_F8,           KC_F11,      KC_F10
+        C(KC_0),   KC_ESC,   W(KC_1),       W(KC_2),  W(KC_3),    W(KC_4),       W(KC_5),  W(KC_6),  W(KC_7),  W(KC_8),  W(KC_9),         W(KC_0),     KC_F11,   KC_F12,   KC_PSCR,  C(A(KC_DEL)), KC_MUTE,
+        PIPELINE,  KC_GRV,   KC_1,          KC_2,     KC_3,       KC_4,          KC_5,     KC_6,     KC_7,     KC_8,     KC_9,            KC_0,        KC_MINS,  KC_EQL,   KC_BSPC,  KC_DEL,
+        ZOOM,      KC_TAB,   KC_Q,          KC_W,     KC_F,       KC_P,          KC_B,     KC_J,     KC_L,     KC_U,     KC_Y,            KC_SLSH,     KC_LBRC,  KC_RBRC,  KC_F9,    KC_HOME,
+        CURR_BD,   KC_TAB,   KC_A,          KC_R,     KC_S,       KC_T,          KC_G,     KC_K,     KC_N,     KC_E,     KC_I,            KC_O,        KC_QUOT,  KC_ENT,   KC_END,
+        PREV_BD,   KC_LCTL,  LSFT_T(KC_X),  KC_C,     KC_D,       KC_V,          KC_Z,     KC_H,     KC_M,     KC_COMM,  LSFT_T(KC_DOT),  MO(SYMBOL),  CW_TOGG,  KC_F12,
+        READ_PQ,   L_CTRL,   KC_LGUI,       KC_LALT,  A(KC_SPC),  MO(FUNCTION),  KC_SPC,   KC_RGUI,  KC_RALT,  L_CTRL,   KC_F8,           KC_F11,      KC_F10
     ),
 
     [ARROWS] = LAYOUT_91_ansi(
@@ -224,6 +225,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             
         case TO_BOOKMARK:
             SEND_STRING(SS_LCTL("l") "@b" SS_TAP(X_DOWN));
+            return false;
+            
+        case PIPELINE:
+            TAP(W(KC_1)); DELAY(25);
+            TAP(C(KC_T)); DELAY(25);
+            TAP(C(KC_V)); DELAY(25);
+            TAP(KC_ENT);
             return false;
 
         default:
