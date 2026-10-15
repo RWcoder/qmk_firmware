@@ -20,7 +20,7 @@
 
 enum layers {
     BASE,
-    ARROWS,
+    DEBUGGER,
     LEFT_CTRL,
     FUNCTION,
     SYMBOL,
@@ -55,17 +55,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         PIPELINE,      KC_GRV,   KC_1,          KC_2,     KC_3,       KC_4,          KC_5,     KC_6,     KC_7,     KC_8,     KC_9,            KC_0,        KC_MINS,  KC_EQL,   KC_BSPC,  KC_DEL,
         XXXXXXX,       KC_TAB,   KC_Q,          KC_W,     KC_F,       KC_P,          KC_B,     KC_J,     KC_L,     KC_U,     KC_Y,            KC_SLSH,     KC_LBRC,  KC_RBRC,  KC_F9,    KC_HOME,
         SLACK_ACTIVE,  KC_TAB,   KC_A,          KC_R,     KC_S,       KC_T,          KC_G,     KC_K,     KC_N,     KC_E,     KC_I,            KC_O,        KC_QUOT,  KC_ENT,   KC_END,
-        PREV_BD,       KC_LCTL,  LSFT_T(KC_X),  KC_C,     KC_D,       KC_V,          KC_Z,     KC_H,     KC_M,     KC_COMM,  LSFT_T(KC_DOT),  MO(SYMBOL),  CW_TOGG,  KC_F12,
-        READ_PQ,       L_CTRL,   KC_LGUI,       KC_LALT,  A(KC_SPC),  MO(FUNCTION),  KC_SPC,   KC_RGUI,  KC_RALT,  L_CTRL,   KC_F8,           KC_F11,      KC_F10
+        PREV_BD,       KC_LCTL,  LSFT_T(KC_X),  KC_C,     KC_D,       KC_V,          KC_Z,     KC_H,     KC_M,     KC_COMM,  LSFT_T(KC_DOT),  MO(SYMBOL),  CW_TOGG,  KC_UP,
+        READ_PQ,       L_CTRL,   KC_LGUI,       KC_LALT,  A(KC_SPC),  MO(FUNCTION),  KC_SPC,   KC_RGUI,  KC_RALT,  L_CTRL,   KC_LEFT,         KC_DOWN,     KC_RIGHT
     ),
 
-    [ARROWS] = LAYOUT_91_ansi(
+    [DEBUGGER] = LAYOUT_91_ansi(
         _______,   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
         _______,   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
-        _______,      _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
+        _______,   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
         _______,   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
-        _______,   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  KC_UP,
-        TO(BASE),  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  KC_LEFT,  KC_DOWN,  KC_RIGHT
+        _______,   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  KC_F12,
+        TO(BASE),  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  KC_F8,    KC_F11,   KC_F10
     ),
 
     [LEFT_CTRL] = LAYOUT_91_ansi(
@@ -114,12 +114,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [BOARD] = LAYOUT_91_ansi(
-        QK_BOOT,   _______,  _______,     _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  RM_TOGG,
-        _______,   _______,  _______,     _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
-        _______,   _______,  TO(QWERTY),  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
-        _______,   _______,  TO(ARROWS),  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
-        _______,   _______,  _______,     _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  DT_UP,
-        TO(BASE),  _______,  _______,     _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  DT_DOWN,  DT_PRNT
+        QK_BOOT,   _______,  _______,     _______,  _______,       _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  RM_TOGG,
+        _______,   _______,  _______,     _______,  _______,       _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
+        _______,   _______,  TO(QWERTY),  _______,  _______,       _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
+        _______,   _______,  _______,     _______,  _______,       _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
+        _______,   _______,  _______,     _______,  TO(DEBUGGER),  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  DT_UP,
+        TO(BASE),  _______,  _______,     _______,  _______,       _______,  _______,  _______,  _______,  _______,  _______,  DT_DOWN,  DT_PRNT
     )
 };
 
@@ -268,7 +268,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 #if defined(ENCODER_MAP_ENABLE)
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
     [BASE]      = { ENCODER_CCW_CW(C(KC_MINS), C(KC_EQL)), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
-    [ARROWS]    = { ENCODER_CCW_CW(C(KC_MINS), C(KC_EQL)), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
+    [DEBUGGER]  = { ENCODER_CCW_CW(C(KC_MINS), C(KC_EQL)), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
     [LEFT_CTRL] = { ENCODER_CCW_CW(C(KC_MINS), C(KC_EQL)), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
     [FUNCTION]  = { ENCODER_CCW_CW(C(KC_MINS), C(KC_EQL)), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
     [SYMBOL]    = { ENCODER_CCW_CW(C(KC_MINS), C(KC_EQL)), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
